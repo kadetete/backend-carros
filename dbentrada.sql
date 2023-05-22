@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `aluno` (
-  `matriculaAluno` int(14) NOT NULL,
+  `matriculaAluno` bigint(14) NOT NULL,
   `noAluno` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -45,7 +45,7 @@ CREATE TABLE `carro` (
   `anoCarro` int(11) NOT NULL,
   `validaCnh` tinyint(1) NOT NULL,
   `codigoEtiqueta` varchar(50) NOT NULL,
-  `matriculaRel` int(14) NOT NULL
+  `matriculaRel` bigint(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `vwalunocarro` (
 ,`Modelo` varchar(80)
 ,`Ano` int(11)
 ,`Aluno` varchar(100)
-,`Matricula` int(14)
+,`Matricula` bigint(14)
 ,`codigoEtiqueta` varchar(50)
 ,`CNHvalida` tinyint(1)
 );

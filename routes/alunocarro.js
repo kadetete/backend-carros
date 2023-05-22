@@ -20,12 +20,7 @@ router.get('/', function(req, res) {
         if (erroComandoSQL) {
             throw erroComandoSQL;
         }
-
-        if (result.lenght > 0) {
-            res.status(200).send(result);
-        } else {
-            res.status(404).send('Não encontrado');
-        }
+        res.status(200).send(result);
     });
 });
 

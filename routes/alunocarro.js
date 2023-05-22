@@ -72,4 +72,61 @@ router.post('/carro', function(req, res) {
         }
     );
 });
+
+router.put('/aluno/:matriculaAluno', function(req, res) {
+    const noAluno = req.body.noAluno;
+    const matriculaAluno = req.body.matriculaAluno;
+
+    const sql = `UPDATE aluno SET noAluno = ?, matriculaAluno = ? WHERE matriculaAluno = ?`;
+    con.query(
+        sql,
+        [noAluno, matriculaAluno, matriculaAluno],
+        function(erroComandoSQL, result, fields) {
+            if (erroComandoSQL) {
+                throw erroComandoSQL;
+            }
+
+            if (result.affectedRows > 0) {
+                res.status(200).send('Registro alterado com sucesso');
+            } else {
+                res.status(404).send('Registro não encontrado');
+            }
+        }
+    );
+});
+
+router.put('/carro/idCarro', function(req, res) {
+    const idCarro = req.body.idCarro;
+    const marcaCarro = req.body.marcaCarro;
+    const modeloCarro = req.body.modeloCarro;
+    const anoCarro = req.body.anoCarro;
+    const codigoEtiqueta = req.body.codigoEtiqueta;
+    const validaCnh = req.body.validaCnh;
+    const matriculaRel = req.body.matriculaRel;
+
+    const sql = `UPDATE carro 
+    SET idCarro = ?,
+    marcaCarro = ?,
+    modeloCarro = ?,
+    anoCarro = ?,
+    codigoEtiqueta = ?,
+    validaCnh = ?,
+    matriculaRel = ?
+    WHERE idCarro = ?`;
+    con.query(
+        sql,
+        [idCarro, marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel, idCarro],
+        function(erroComandoSQL, result, fields) {
+            if (erroComandoSQL) {
+                throw erroComandoSQL;
+            }
+
+            if (result.affectedRows > 0) {
+                res.status(200).send('Registro alterado com sucesso');
+            } else {
+                res.status(404).send('Registro não encontrado');
+            }
+        }
+    );
+});
 module.exports = router;

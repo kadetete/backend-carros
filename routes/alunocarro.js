@@ -24,6 +24,24 @@ router.get('/', function(req, res) {
     });
 });
 
+router.get('/matricula', function(req, res) {
+    con.query('SELECT Matricula FROM vwalunocarro', function(erroComandoSQL, result, fields) {
+        if (erroComandoSQL) {
+            throw erroComandoSQL;
+        }
+        res.status(200).send(result);
+    });
+});
+
+router.get('/carrocount', function(req, res) {
+    con.query('SELECT COUNT(idCarro) FROM carro', function(erroComandoSQL, result, fields) {
+        if (erroComandoSQL) {
+            throw erroComandoSQL;
+        }
+        res.status(200).send(result);
+    });
+});
+
 router.post('/aluno', function(req, res) {
     const noAluno = req.body.noAluno;
     const matriculaAluno = req.body.matriculaAluno;

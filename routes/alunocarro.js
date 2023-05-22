@@ -95,7 +95,7 @@ router.put('/aluno/:matriculaAluno', function(req, res) {
     );
 });
 
-router.put('/carro/idCarro', function(req, res) {
+router.put('/carro/:idCarro', function(req, res) {
     const idCarro = req.body.idCarro;
     const marcaCarro = req.body.marcaCarro;
     const modeloCarro = req.body.modeloCarro;
@@ -125,6 +125,48 @@ router.put('/carro/idCarro', function(req, res) {
                 res.status(200).send('Registro alterado com sucesso');
             } else {
                 res.status(404).send('Registro não encontrado');
+            }
+        }
+    );
+});
+
+router.delete('/aluno/:matriculaAluno', function(req, res) {
+    const matriculaAluno = req.body.matriculaAluno;
+
+    const sql = `DELETE FROM aluno WHERE matriculaAluno = ?`;
+    con.query(
+        sql,
+        [matriculaAluno],
+        function(erroComandoSQL, result, fields) {
+            if (erroComandoSQL) {
+                throw erroComandoSQL;
+            }
+
+            if (result.affectedRows > 0) {
+                res.status(200).send('Registro excluído com sucesso');
+            } else {
+                res.status(404).send('Não encontrado');
+            }
+        }
+    );
+});
+
+router.delete('/carro:idCarro', function(req, res) {
+    const idCarro = req.body.idCarro;
+
+    const sql = `DELETE FROM carro WHERE idCarro = ?`;
+    con.query(
+        sql,
+        [idCarro],
+        function(erroComandoSQL, result, fields) {
+            if (erroComandoSQL) {
+                throw erroComandoSQL;
+            }
+
+            if (result.affectedRows > 0) {
+                res.status(200).send('Registro excluído com sucesso');
+            } else {
+                res.status(404).send('Não encontrado');
             }
         }
     );

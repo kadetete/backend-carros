@@ -34,14 +34,15 @@ router.get('/matricula', function(req, res) {
 });
 
 router.get('/carro/:matriculaRel', function(req, res) {
-    const matriculaRel = req.params.matriculaRel
+    const matriculaRel = req.params.matriculaRel;
 
     const sql = `SELECT idCarro FROM carro WHERE matriculaRel = ?`
     con.query(sql, [matriculaRel], function(erroComandoSQL, result, fields) {
         if (erroComandoSQL) {
             throw erroComandoSQL;
         }
-        res.status(200).send(result);
+        const idCarro = result[0].idCarro;
+        res.status(200).send({ id: idCarro });
     });
 });
 

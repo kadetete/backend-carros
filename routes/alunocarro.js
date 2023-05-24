@@ -69,7 +69,6 @@ router.post('/aluno', function(req, res) {
 });
 
 router.post('/carro', function(req, res) {
-    const idCarro = req.body.idCarro;
     const marcaCarro = req.body.marcaCarro;
     const modeloCarro = req.body.modeloCarro;
     const anoCarro = req.body.anoCarro;
@@ -77,10 +76,10 @@ router.post('/carro', function(req, res) {
     const validaCnh = req.body.validaCnh;
     const matriculaRel = req.body.matriculaRel;
 
-    const sql = `INSERT INTO carro (idCarro, marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO carro (marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel) VALUES (?, ?, ?, ?, ?, ?, ?)`;
     con.query(
         sql,
-        [idCarro, marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel],
+        [marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel],
         function(erroComandoSQL, result, fields) {
             if (erroComandoSQL) {
                 throw erroComandoSQL;

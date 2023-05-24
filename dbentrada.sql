@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Tempo de geração: 22/05/2023 às 21:31
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 24/05/2023 às 21:47
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -22,8 +22,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-CREATE DATABASE dbentrada;
-USE dbentrada;
+
 --
 -- Estrutura para tabela `aluno`
 --
@@ -90,6 +89,16 @@ ALTER TABLE `aluno`
 ALTER TABLE `carro`
   ADD PRIMARY KEY (`idCarro`),
   ADD KEY `fk_matricula` (`matriculaRel`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `carro`
+--
+ALTER TABLE `carro`
+  MODIFY `idCarro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas

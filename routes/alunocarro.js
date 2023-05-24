@@ -33,8 +33,11 @@ router.get('/matricula', function(req, res) {
     });
 });
 
-router.get('/carrocount', function(req, res) {
-    con.query('SELECT COUNT(idCarro) FROM carro', function(erroComandoSQL, result, fields) {
+router.get('/carro/:matriculaRel', function(req, res) {
+    const matriculaRel = req.params.matriculaRel
+
+    const sql = `SELECT idCarro FROM carro WHERE matriculaRel = ?`
+    con.query(sql, [matriculaRel], function(erroComandoSQL, result, fields) {
         if (erroComandoSQL) {
             throw erroComandoSQL;
         }
@@ -149,7 +152,7 @@ router.put('/carro/:idCarro', function(req, res) {
 });
 
 router.delete('/aluno/:matriculaAluno', function(req, res) {
-    const matriculaAluno = req.body.matriculaAluno;
+    const matriculaAluno = req.params.matriculaAluno;
 
     const sql = `DELETE FROM aluno WHERE matriculaAluno = ?`;
     con.query(
@@ -169,8 +172,8 @@ router.delete('/aluno/:matriculaAluno', function(req, res) {
     );
 });
 
-router.delete('/carro:idCarro', function(req, res) {
-    const idCarro = req.body.idCarro;
+router.delete('/carro/:idCarro', function(req, res) {
+    const idCarro = req.params.idCarro;
 
     const sql = `DELETE FROM carro WHERE idCarro = ?`;
     con.query(

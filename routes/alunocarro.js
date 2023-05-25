@@ -77,7 +77,7 @@ router.post('/carro', function(req, res) {
     const validaCnh = req.body.validaCnh;
     const matriculaRel = req.body.matriculaRel;
 
-    const sql = `INSERT INTO carro (marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO carro (marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel) VALUES (?, ?, ?, ?, ?, ?)`;
     con.query(
         sql,
         [marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel],

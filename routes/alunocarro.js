@@ -118,7 +118,7 @@ router.put('/aluno/:matriculaAluno', function(req, res) {
 });
 
 router.put('/carro/:idCarro', function(req, res) {
-    const idCarro = req.body.idCarro;
+    const idCarro = req.params.idCarro;
     const marcaCarro = req.body.marcaCarro;
     const modeloCarro = req.body.modeloCarro;
     const anoCarro = req.body.anoCarro;
@@ -127,8 +127,7 @@ router.put('/carro/:idCarro', function(req, res) {
     const matriculaRel = req.body.matriculaRel;
 
     const sql = `UPDATE carro 
-    SET idCarro = ?,
-    marcaCarro = ?,
+    SET marcaCarro = ?,
     modeloCarro = ?,
     anoCarro = ?,
     codigoEtiqueta = ?,
@@ -137,7 +136,7 @@ router.put('/carro/:idCarro', function(req, res) {
     WHERE idCarro = ?`;
     con.query(
         sql,
-        [idCarro, marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel, idCarro],
+        [marcaCarro, modeloCarro, anoCarro, codigoEtiqueta, validaCnh, matriculaRel, idCarro],
         function(erroComandoSQL, result, fields) {
             if (erroComandoSQL) {
                 throw erroComandoSQL;

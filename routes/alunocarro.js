@@ -64,6 +64,7 @@ router.post('/aluno', function(req, res) {
             } else {
                 res.status(400).send('Erro ao incluir registro');
             }
+            
         }
     );
 });

@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE DATABASE dbentrada;
+USE dbentrada;
 --
 -- Estrutura para tabela `aluno`
 --
